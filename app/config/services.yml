@@ -1,0 +1,19 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+    offer.search_filter:
+        parent:    'api_platform.doctrine.orm.search_filter'
+        arguments: [ { id: 'exact',  email: 'partial' } ]
+        tags:      [ { name: 'api_platform.filter', id: 'client.search' } ]
+        
+#    offer.custom_order_filter:
+#        class: 'AppBundle\Filter\ClientPhoneFilter'
+#        #arguments: [ { phone: 'exact' } ]
+#        tags:      [ { name: 'api_platform.filter', id: 'client.phone' } ]
